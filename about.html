@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1730">
-<meta name="description" content="Learn about the five essential characteristics of cloud computing through explanations and real-world examples.">
+<meta name="description" content="Explore cloud computing, its benefits, technologies, and five essential characteristics. An AI Cloud Team academic project.">
 
-<title>Five Cloud Characteristics | AI Cloud Team</title>
+<title>Cloud Computing | AI Cloud Team</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,13 +16,13 @@
 <style>
 :root {
     --navy: #0b1730;
-    --blue: #164e83;
+    --blue: #123d68;
     --cyan: #42d6e8;
-    --bg: #f3f7fc;
-    --card: #ffffff;
     --text: #172b4d;
     --muted: #68788f;
-    --border: #e4edf6;
+    --bg: #f3f7fc;
+    --card: #ffffff;
+    --border: #e5edf5;
 }
 
 * {
@@ -54,7 +54,7 @@ a { text-decoration: none; }
 /* Navigation */
 nav {
     min-height: 76px;
-    background: rgba(11,23,48,.97);
+    background: rgba(11, 23, 48, .97);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,6 +69,7 @@ nav {
     color: white;
     font-size: 21px;
     font-weight: 800;
+    letter-spacing: -.5px;
 }
 
 .logo span { color: var(--cyan); }
@@ -91,6 +92,7 @@ nav {
 
 .nav-actions {
     display: flex;
+    align-items: center;
     gap: 12px;
 }
 
@@ -106,329 +108,244 @@ nav {
 
 .menu-btn { display: none; }
 
-/* Page hero */
-.header {
-    min-height: 390px;
-    padding: 80px 20px;
+/* Hero */
+.hero {
+    min-height: 570px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 90px 20px;
     color: white;
+    position: relative;
     background:
-        linear-gradient(120deg, rgba(7,19,43,.94), rgba(10,57,100,.78)),
+        linear-gradient(120deg, rgba(7,19,43,.94), rgba(10,57,100,.76)),
         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=85') center/cover;
 }
 
-.header-content { max-width: 800px; }
+.hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+}
 
 .eyebrow {
+    display: inline-block;
+    padding: 8px 17px;
+    border: 1px solid rgba(66,214,232,.5);
+    border-radius: 30px;
     color: var(--cyan);
     font-size: 13px;
+    font-weight: 700;
+    background: rgba(66,214,232,.09);
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 65px);
+    line-height: 1.16;
+    margin-bottom: 22px;
     font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
+    letter-spacing: -2px;
 }
 
-.header h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.2;
-    margin-bottom: 18px;
-}
+.hero h1 span { color: var(--cyan); }
 
-.header p {
-    color: #dce8f5;
+.hero h3 {
+    color: #d0e7f7;
     font-size: 16px;
+    margin-bottom: 18px;
+    font-weight: 500;
+}
+
+.hero p {
+    max-width: 690px;
+    margin: auto;
+    color: #e0eafa;
+    font-size: 17px;
+}
+
+.hero-buttons {
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 27px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--cyan);
+    color: var(--navy);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255,255,255,.6);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+/* General sections */
+.container {
+    max-width: 1160px;
+    margin: auto;
+    padding: 85px 22px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading .small-title {
+    color: #10aabd;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: clamp(27px, 4vw, 37px);
+    color: var(--text);
+    margin: 9px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
     max-width: 650px;
     margin: auto;
 }
 
-/* Intro */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 65px 22px;
-}
-
-.intro {
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto 38px;
-}
-
-.intro h2 {
-    font-size: 29px;
-    margin-bottom: 10px;
-}
-
-.intro p { color: var(--muted); }
-
-/* Search */
-.search-area {
-    max-width: 600px;
-    margin: 0 auto 30px;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 13px 18px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(10,40,70,.05);
-}
-
-.search-box span { font-size: 20px; }
-
-.search-box input {
-    flex: 1;
-    min-width: 0;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 14px;
-}
-
-.search-box input::placeholder { color: var(--muted); }
-
-.search-status {
-    text-align: center;
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 9px;
-}
-
-/* Progress */
-.progress-area {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    text-align: center;
-}
-
-.progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 9px;
-}
-
-.progress-track {
-    height: 8px;
-    background: var(--border);
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #159fbd, #42d6e8);
-    border-radius: 20px;
-    transition: width .4s;
-}
-
-/* Feature cards */
-.features {
+/* Introduction */
+.intro-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.intro-image {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(15,40,70,.15);
+}
+
+.intro-content h2 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin-bottom: 18px;
+    color: var(--text);
+}
+
+.intro-content p {
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.learn-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0a9db2;
+    font-weight: 800;
+}
+
+/* Benefits */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
 
-.feature {
+.card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 17px;
-    padding: 28px;
-    box-shadow: 0 5px 20px rgba(12,40,75,.05);
+    padding: 30px;
+    border-radius: 16px;
     transition: .3s;
-    overflow: hidden;
 }
 
-.feature:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 13px 30px rgba(12,40,75,.1);
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(12,40,75,.1);
     border-color: var(--cyan);
 }
 
-.feature-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.card-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+    background: rgba(66,214,232,.14);
+    display: grid;
+    place-items: center;
+    font-size: 28px;
     margin-bottom: 20px;
 }
 
-.feature-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 15px;
-    display: grid;
-    place-items: center;
-    font-size: 29px;
-    background: rgba(66,214,232,.14);
-}
-
-.number {
-    font-size: 29px;
-    font-weight: 800;
-    color: #15a9bd;
-    opacity: .8;
-}
-
-.feature h2 {
-    font-size: 21px;
+.card h3 {
     color: var(--text);
-    margin-bottom: 12px;
-}
-
-.feature > p {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 18px;
-}
-
-.example {
-    background: rgba(66,214,232,.09);
-    border-left: 3px solid #20b9cb;
-    padding: 14px;
-    border-radius: 5px 10px 10px 5px;
-    margin: 18px 0;
-}
-
-.example strong {
-    display: block;
-    color: #079caf;
-    font-size: 12px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-}
-
-.example p {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.feature details {
-    border-top: 1px solid var(--border);
-    padding-top: 14px;
-    margin-top: 15px;
-}
-
-.feature summary {
-    cursor: pointer;
-    font-size: 13px;
-    color: #0a9db2;
-    font-weight: 800;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-.feature summary::-webkit-details-marker { display: none; }
-
-.feature summary::after {
-    content: "+";
     font-size: 19px;
-    line-height: 1;
+    margin-bottom: 10px;
 }
 
-.feature details[open] summary::after { content: "−"; }
-
-.extra {
+.card p {
     color: var(--muted);
-    font-size: 13px;
-    padding-top: 12px;
+    font-size: 14px;
 }
 
-.extra strong { color: var(--text); }
-
-/* Completion button */
-.complete-btn {
-    margin-top: 17px;
-    padding: 9px 15px;
-    border: 1px solid #18afc1;
-    border-radius: 8px;
-    background: transparent;
-    color: #079caf;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 700;
-    transition: .3s;
-}
-
-.complete-btn:hover,
-.complete-btn.completed {
-    background: #119eb3;
+/* Highlight */
+.highlight {
+    background: linear-gradient(120deg, #102746, #145a86);
     color: white;
-}
-
-.no-results {
-    display: none;
+    border-radius: 20px;
+    padding: 55px 35px;
     text-align: center;
-    color: var(--muted);
-    padding: 40px;
-    grid-column: 1/-1;
 }
 
-/* Bottom banner */
-.bottom-banner {
-    margin-top: 65px;
-    background: linear-gradient(120deg,#102746,#145a86);
-    color: white;
-    text-align: center;
-    padding: 48px 25px;
-    border-radius: 19px;
-}
-
-.bottom-banner h2 {
-    font-size: 28px;
+.highlight h2 {
+    font-size: 30px;
     margin-bottom: 12px;
 }
 
-.bottom-banner p {
-    color: #dce8f5;
-    max-width: 600px;
-    margin: auto auto 23px;
+.highlight p {
+    color: #d7e8f5;
+    max-width: 650px;
+    margin: 0 auto 25px;
 }
-
-.back {
-    display: inline-block;
-    padding: 12px 23px;
-    background: var(--cyan);
-    color: var(--navy);
-    border-radius: 9px;
-    font-size: 14px;
-    font-weight: 800;
-    transition: .3s;
-}
-
-.back:hover { transform: translateY(-4px); }
 
 /* Footer */
 footer {
     background: #09152a;
     color: #c4d2e3;
+    padding: 40px 20px 20px;
     text-align: center;
-    padding: 35px 20px 20px;
 }
 
 footer h3 {
     color: var(--cyan);
+    font-size: 21px;
     margin-bottom: 10px;
 }
 
-footer p {
-    font-size: 13px;
-    margin-bottom: 8px;
-}
+footer p { font-size: 13px; margin-bottom: 7px; }
 
-.footer-links { margin: 15px 0; }
+.footer-links {
+    margin: 16px 0;
+}
 
 .footer-links a {
     color: #dce8f5;
@@ -440,14 +357,26 @@ footer p {
 
 .copyright {
     border-top: 1px solid #2a3c54;
-    margin-top: 20px;
-    padding-top: 17px;
+    margin-top: 22px;
+    padding-top: 18px;
     color: #8fa2ba;
 }
 
-/* Responsive */
-@media(max-width: 800px) {
-    .features { grid-template-columns: 1fr; }
+/* Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media(max-width: 850px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .intro-grid { gap: 30px; }
 }
 
 @media(max-width: 650px) {
@@ -464,12 +393,16 @@ footer p {
     }
 
     .nav-links.open { display: flex; }
+
     .nav-links a { margin: 0; }
-    .header { min-height: 350px; padding: 65px 20px; }
-    .container { padding: 48px 16px; }
-    .feature { padding: 23px; }
-    .bottom-banner { padding: 38px 18px; }
-    .bottom-banner h2 { font-size: 23px; }
+    .hero { min-height: 530px; }
+    .hero h1 { letter-spacing: -1px; }
+    .hero p { font-size: 15px; }
+    .container { padding: 60px 18px; }
+    .cards, .intro-grid { grid-template-columns: 1fr; }
+    .intro-image { height: 250px; }
+    .highlight { padding: 40px 20px; }
+    .highlight h2 { font-size: 24px; }
 }
 </style>
 </head>
@@ -480,9 +413,10 @@ footer p {
     <a href="index.html" class="logo">☁ AI <span>Cloud Team</span></a>
 
     <div class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="index.html#introduction">Introduction</a>
-        <a href="about.html" class="active">Cloud Features</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="#introduction">Introduction</a>
+        <a href="#benefits">Benefits</a>
+        <a href="about.html">Cloud Features</a>
     </div>
 
     <div class="nav-actions">
@@ -491,248 +425,145 @@ footer p {
     </div>
 </nav>
 
-<header class="header">
-    <div class="header-content">
-        <div class="eyebrow">THE FOUNDATION OF CLOUD TECHNOLOGY</div>
+<header class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">☁ THE FUTURE OF TECHNOLOGY</div>
 
-        <h1>Five Essential Characteristics of Cloud Computing</h1>
+        <h1>Explore the World of <span>Cloud Computing</span></h1>
+
+        <h3>AI Cloud Team | AINT327 - Cloud Computing Project</h3>
 
         <p>
-            Explore the five fundamental characteristics that define
-            cloud computing, understand how they work, and discover
-            examples from everyday technology.
+            Discover how cloud computing is transforming our digital world.
+            Learn how people and businesses access computing resources,
+            store information, and use powerful technologies through the internet.
         </p>
+
+        <div class="hero-buttons">
+            <a href="about.html" class="btn btn-primary">Explore the 5 Features →</a>
+            <a href="#introduction" class="btn btn-secondary">Discover More</a>
+        </div>
     </div>
 </header>
 
-<main class="container">
+<main>
 
-    <section class="intro">
-        <h2>What Makes Cloud Computing Different?</h2>
+<section class="container" id="introduction">
+    <div class="intro-grid reveal">
+        <div>
+            <img
+                class="intro-image"
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
+                alt="Modern computer technology and electronic components"
+                loading="lazy">
+        </div>
+
+        <div class="intro-content">
+            <div class="section-heading" style="text-align:left;margin-bottom:18px">
+                <span class="small-title">GET TO KNOW THE CLOUD</span>
+            </div>
+
+            <h2>Understanding Cloud Computing</h2>
+
+            <p>
+                Cloud computing is the delivery of computing services,
+                including servers, storage, databases, networking,
+                and software, over the internet.
+            </p>
+
+            <p>
+                Instead of relying only on local computers, users can
+                access computing resources from cloud providers whenever
+                they need them.
+            </p>
+
+            <a href="about.html" class="learn-link">
+                Discover its five essential characteristics →
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="benefits">
+    <div class="section-heading reveal">
+        <span class="small-title">WHY CLOUD COMPUTING?</span>
+        <h2>Explore the Benefits</h2>
         <p>
-            According to the NIST cloud computing definition,
-            cloud computing has five essential characteristics.
-            Explore each characteristic below to understand its
-            meaning and practical applications.
+            Cloud computing offers flexible and convenient ways
+            to access and manage digital resources.
         </p>
-    </section>
-
-    <section class="progress-area">
-        <div class="progress-label">
-            <span>Your Learning Progress</span>
-            <span id="progressText">0 / 5 completed</span>
-        </div>
-        <div class="progress-track">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-    </section>
-
-    <div class="search-area">
-        <div class="search-box">
-            <span>🔍</span>
-            <input
-                type="search"
-                id="featureSearch"
-                placeholder="Search cloud characteristics..."
-                aria-label="Search cloud characteristics">
-        </div>
-        <p class="search-status" id="searchStatus">Showing all 5 characteristics</p>
     </div>
 
-    <section class="features" id="features">
-
-        <!-- Feature 1 -->
-        <article class="feature" data-name="on-demand self-service automatic resources">
-            <div class="feature-top">
-                <div class="feature-icon">⚡</div>
-                <span class="number">01</span>
-            </div>
-
-            <h2>On-Demand Self-Service</h2>
-
+    <div class="cards">
+        <article class="card reveal">
+            <div class="card-icon">🌍</div>
+            <h3>Access Anywhere</h3>
             <p>
-                Users can independently access computing resources,
-                such as storage and processing power, whenever needed,
-                without requiring direct human interaction with the
-                service provider.
+                Access cloud services and information through the internet
+                from different locations and supported devices.
             </p>
-
-            <div class="example">
-                <strong>🌍 Real-World Example</strong>
-                <p>
-                    A user can create cloud storage or launch a virtual
-                    machine through an online dashboard without calling
-                    the cloud provider.
-                </p>
-            </div>
-
-            <details>
-                <summary>Learn More</summary>
-                <div class="extra">
-                    <p><strong>Key Idea:</strong> Users control and request resources themselves.</p>
-                    <p><strong>Remember:</strong> No direct human interaction with the provider is required for each request.</p>
-                </div>
-            </details>
-
-            <button class="complete-btn" data-feature="1">Mark as Learned ✓</button>
         </article>
 
-        <!-- Feature 2 -->
-        <article class="feature" data-name="broad network access internet devices smartphones computers">
-            <div class="feature-top">
-                <div class="feature-icon">🌐</div>
-                <span class="number">02</span>
-            </div>
-
-            <h2>Broad Network Access</h2>
-
+        <article class="card reveal">
+            <div class="card-icon">⚡</div>
+            <h3>Flexible Resources</h3>
             <p>
-                Cloud services are available over a network and can
-                be accessed through different devices, including
-                computers, tablets, and smartphones.
+                Increase or decrease computing resources according
+                to changing requirements.
             </p>
-
-            <div class="example">
-                <strong>📱 Real-World Example</strong>
-                <p>
-                    A student can access files stored in Google Drive
-                    using a laptop, tablet, or smartphone through
-                    an internet connection.
-                </p>
-            </div>
-
-            <details>
-                <summary>Learn More</summary>
-                <div class="extra">
-                    <p><strong>Key Idea:</strong> Access from different devices through a network.</p>
-                    <p><strong>Remember:</strong> The service is not limited to one specific computer or location.</p>
-                </div>
-            </details>
-
-            <button class="complete-btn" data-feature="2">Mark as Learned ✓</button>
         </article>
 
-        <!-- Feature 3 -->
-        <article class="feature" data-name="resource pooling shared resources multi tenancy">
-            <div class="feature-top">
-                <div class="feature-icon">🔄</div>
-                <span class="number">03</span>
-            </div>
-
-            <h2>Resource Pooling</h2>
-
+        <article class="card reveal">
+            <div class="card-icon">🔐</div>
+            <h3>Data Management</h3>
             <p>
-                The provider's computing resources are shared among
-                multiple users using a multi-tenant model. Resources
-                are dynamically assigned according to demand.
+                Use cloud services to store, organize, manage,
+                and access digital information.
             </p>
-
-            <div class="example">
-                <strong>🏢 Real-World Example</strong>
-                <p>
-                    A cloud provider uses shared data center infrastructure
-                    to serve multiple customers while keeping their
-                    data logically separated.
-                </p>
-            </div>
-
-            <details>
-                <summary>Learn More</summary>
-                <div class="extra">
-                    <p><strong>Key Idea:</strong> Multiple customers share a pool of computing resources.</p>
-                    <p><strong>Remember:</strong> Customers may not know the exact physical location of the resources.</p>
-                </div>
-            </details>
-
-            <button class="complete-btn" data-feature="3">Mark as Learned ✓</button>
         </article>
 
-        <!-- Feature 4 -->
-        <article class="feature" data-name="rapid elasticity scalability increase decrease demand">
-            <div class="feature-top">
-                <div class="feature-icon">📈</div>
-                <span class="number">04</span>
-            </div>
-
-            <h2>Rapid Elasticity</h2>
-
+        <article class="card reveal">
+            <div class="card-icon">💰</div>
+            <h3>Cost Efficiency</h3>
             <p>
-                Computing resources can be rapidly increased or
-                decreased according to changing demand. Resources
-                may appear virtually unlimited to the user.
+                Reduce the need to purchase and maintain all computing
+                infrastructure locally.
             </p>
-
-            <div class="example">
-                <strong>🛒 Real-World Example</strong>
-                <p>
-                    An online shopping website can increase its
-                    computing resources during a major sale and
-                    reduce them when traffic decreases.
-                </p>
-            </div>
-
-            <details>
-                <summary>Learn More</summary>
-                <div class="extra">
-                    <p><strong>Key Idea:</strong> Resources can quickly expand or contract.</p>
-                    <p><strong>Remember:</strong> The system adapts to changing workloads and demand.</p>
-                </div>
-            </details>
-
-            <button class="complete-btn" data-feature="4">Mark as Learned ✓</button>
         </article>
 
-        <!-- Feature 5 -->
-        <article class="feature" data-name="measured service monitoring usage billing metering">
-            <div class="feature-top">
-                <div class="feature-icon">📊</div>
-                <span class="number">05</span>
-            </div>
-
-            <h2>Measured Service</h2>
-
+        <article class="card reveal">
+            <div class="card-icon">🚀</div>
+            <h3>Scalability</h3>
             <p>
-                Cloud systems automatically monitor and measure
-                resource usage, such as storage, processing,
-                bandwidth, and active user accounts.
+                Adapt computing capacity to support changing workloads
+                and business demands.
             </p>
-
-            <div class="example">
-                <strong>💳 Real-World Example</strong>
-                <p>
-                    A cloud customer can be charged according to
-                    the storage or computing resources they actually
-                    consume, depending on the pricing model.
-                </p>
-            </div>
-
-            <details>
-                <summary>Learn More</summary>
-                <div class="extra">
-                    <p><strong>Key Idea:</strong> Cloud resource usage is monitored and measured.</p>
-                    <p><strong>Remember:</strong> Both providers and users can access usage information and reports.</p>
-                </div>
-            </details>
-
-            <button class="complete-btn" data-feature="5">Mark as Learned ✓</button>
         </article>
 
-        <div class="no-results" id="noResults">
-            <h3>No characteristics found</h3>
-            <p>Try searching using another keyword.</p>
-        </div>
+        <article class="card reveal">
+            <div class="card-icon">🤝</div>
+            <h3>Collaboration</h3>
+            <p>
+                Support teamwork by allowing users to access shared
+                applications and information online.
+            </p>
+        </article>
+    </div>
+</section>
 
-    </section>
-
-    <section class="bottom-banner">
-        <h2>Congratulations on Exploring Cloud Computing!</h2>
+<section class="container">
+    <div class="highlight reveal">
+        <h2>Ready to Explore the Five Characteristics?</h2>
         <p>
-            You have explored the five essential characteristics.
-            Continue your learning journey and discover how cloud
-            technology powers modern digital services.
+            Learn about the five essential characteristics that
+            define cloud computing and understand how each one works
+            in real-world applications.
         </p>
-        <a href="index.html" class="back">← Return to Homepage</a>
-    </section>
+        <a href="about.html" class="btn btn-primary">
+            Discover Cloud Features →
+        </a>
+    </div>
+</section>
 
 </main>
 
@@ -757,7 +588,6 @@ const themeBtn = document.getElementById("themeBtn");
 // Mobile navigation
 menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("open");
-
     menuBtn.setAttribute(
         "aria-expanded",
         navLinks.classList.contains("open")
@@ -771,7 +601,7 @@ navLinks.querySelectorAll("a").forEach(link => {
     });
 });
 
-// Dark mode
+// Dark mode with saved preference
 if (localStorage.getItem("cloudTheme") === "dark") {
     document.body.classList.add("dark");
     themeBtn.textContent = "☀️";
@@ -786,65 +616,19 @@ themeBtn.addEventListener("click", () => {
     localStorage.setItem("cloudTheme", isDark ? "dark" : "light");
 });
 
-// Search functionality
-const searchInput = document.getElementById("featureSearch");
-const featureCards = [...document.querySelectorAll(".feature")];
-const noResults = document.getElementById("noResults");
-const searchStatus = document.getElementById("searchStatus");
-
-searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase().trim();
-    let visible = 0;
-
-    featureCards.forEach(card => {
-        const content = (
-            card.dataset.name + " " + card.innerText
-        ).toLowerCase();
-
-        const match = content.includes(query);
-
-        card.style.display = match ? "block" : "none";
-
-        if (match) visible++;
-    });
-
-    noResults.style.display = visible === 0 ? "block" : "none";
-
-    searchStatus.textContent =
-        `Showing ${visible} of 5 characteristics`;
-});
-
-// Learning progress
-const completed = new Set();
-
-document.querySelectorAll(".complete-btn").forEach(button => {
-    button.addEventListener("click", () => {
-        const id = button.dataset.feature;
-
-        if (completed.has(id)) {
-            completed.delete(id);
-            button.classList.remove("completed");
-            button.textContent = "Mark as Learned ✓";
-        } else {
-            completed.add(id);
-            button.classList.add("completed");
-            button.textContent = "✓ Learned";
+// Scroll reveal animation
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
         }
-
-        updateProgress();
     });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
 });
-
-function updateProgress() {
-    const count = completed.size;
-    const percentage = (count / 5) * 100;
-
-    document.getElementById("progressFill").style.width =
-        percentage + "%";
-
-    document.getElementById("progressText").textContent =
-        `${count} / 5 completed`;
-}
 </script>
 
 </body>
