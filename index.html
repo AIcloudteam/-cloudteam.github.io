@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deploy Your First Cloud Service | AIEN 327</title>
+
+    <title>Cloud Computing | AIEN 327</title>
 
     <style>
         * {
@@ -14,145 +15,165 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background: #f4f7fb;
-            color: #1e293b;
-            line-height: 1.6;
+            color: #172b4d;
+            line-height: 1.7;
         }
 
-        header {
-            background: #0b1f3a;
+        /* Navigation */
+        nav {
+            background: #101f3c;
             color: white;
-            padding: 20px 8%;
+            padding: 18px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
-        header h2 {
-            font-size: 22px;
+        nav h2 {
+            color: #42d6e8;
+            font-size: 23px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 22px;
-            font-weight: bold;
+            margin-left: 25px;
+            font-weight: 500;
         }
 
         nav a:hover {
-            color: #38bdf8;
+            color: #42d6e8;
         }
 
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0b1f3a, #145da0);
+            background: linear-gradient(135deg, #101f3c, #164e83);
             color: white;
             text-align: center;
-            padding: 90px 20px;
+            padding: 100px 20px;
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #42d6e8;
         }
 
         .hero p {
-            font-size: 18px;
             max-width: 700px;
-            margin: 0 auto 30px;
-            color: #dbeafe;
+            margin: auto;
+            font-size: 18px;
+            color: #dce8f5;
         }
 
-        .btn {
+        .hero a {
             display: inline-block;
-            background: #38bdf8;
-            color: #0b1f3a;
-            padding: 13px 25px;
-            border-radius: 6px;
+            margin-top: 30px;
+            padding: 13px 30px;
+            background: #42d6e8;
+            color: #101f3c;
             text-decoration: none;
+            border-radius: 7px;
             font-weight: bold;
             transition: 0.3s;
         }
 
-        .btn:hover {
+        .hero a:hover {
             background: white;
             transform: translateY(-3px);
         }
 
+        /* Main Content */
         .container {
-            width: 85%;
             max-width: 1100px;
-            margin: 60px auto;
+            margin: auto;
+            padding: 65px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
-            color: #0b1f3a;
+            margin-bottom: 15px;
+            font-size: 30px;
+            color: #142d50;
         }
 
+        .subtitle {
+            text-align: center;
+            color: #66758a;
+            margin-bottom: 40px;
+        }
+
+        /* Cards */
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
         .card {
             background: white;
-            padding: 28px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-            border-top: 4px solid #38bdf8;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(16, 31, 60, 0.07);
+            border-top: 4px solid #42d6e8;
+            transition: 0.3s;
         }
 
-        .card h3 {
-            color: #145da0;
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(16, 31, 60, 0.12);
+        }
+
+        .card .icon {
+            font-size: 35px;
             margin-bottom: 12px;
         }
 
-        .objectives {
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            margin-top: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        .card h3 {
+            color: #164e83;
+            margin-bottom: 12px;
         }
 
-        .objectives h2 {
-            color: #0b1f3a;
-            margin-bottom: 15px;
+        .card p {
+            color: #66758a;
+            font-size: 15px;
         }
 
-        .objectives ul {
-            padding-left: 25px;
-        }
-
-        .objectives li {
-            margin-bottom: 10px;
-        }
-
+        /* Footer */
         footer {
-            background: #0b1f3a;
-            color: white;
+            background: #101f3c;
+            color: #dce8f5;
             text-align: center;
             padding: 25px;
-            margin-top: 60px;
         }
 
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 30px;
-            }
+        footer span {
+            color: #42d6e8;
+        }
 
-            header {
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
                 flex-direction: column;
+                gap: 12px;
             }
 
             nav a {
                 margin: 0 8px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -160,79 +181,94 @@
 
 <body>
 
-    <header>
-        <h2>Cloud Service Project</h2>
+    <!-- Navigation -->
+    <nav>
+        <h2>☁ Cloud Computing</h2>
 
-        <nav>
+        <div>
             <a href="index.html">Home</a>
-            <a href="about.html">Project Concepts</a>
-        </nav>
-    </header>
+            <a href="about.html">Cloud Features</a>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Deploy Your First Cloud Service</h1>
+
+        <h1>Welcome to the <span>Cloud</span></h1>
 
         <p>
-            A practical cloud computing project demonstrating website
-            deployment, cloud infrastructure, and cost estimation.
+            Discover how cloud computing transforms the way
+            we store data, access applications, and use technology
+            through the power of the internet.
         </p>
 
-        <a href="about.html" class="btn">
-            Explore Our Project →
-        </a>
+        <a href="about.html">Explore Cloud Computing →</a>
+
     </section>
 
+    <!-- Introduction -->
     <main class="container">
 
-        <h2 class="section-title">About This Project</h2>
+        <h2 class="section-title">
+            Understanding Cloud Computing
+        </h2>
+
+        <p class="subtitle">
+            A smarter way to access and manage computing resources.
+        </p>
 
         <div class="cards">
 
             <div class="card">
-                <h3>Website Deployment</h3>
+                <div class="icon">🌐</div>
+
+                <h3>Access Anywhere</h3>
+
                 <p>
-                    Create and publish a website using GitHub Pages
-                    to understand how cloud-based hosting works.
+                    Access cloud services and information
+                    through the internet from different
+                    locations and devices.
                 </p>
             </div>
 
             <div class="card">
-                <h3>Cloud Infrastructure</h3>
+                <div class="icon">⚡</div>
+
+                <h3>Flexible Resources</h3>
+
                 <p>
-                    Explore cloud computing services and understand
-                    the role of infrastructure in hosting applications.
+                    Cloud resources can be adjusted
+                    according to changing user and
+                    business requirements.
                 </p>
             </div>
 
             <div class="card">
-                <h3>Cloud Cost Analysis</h3>
+                <div class="icon">🔒</div>
+
+                <h3>Data Management</h3>
+
                 <p>
-                    Use the AWS Pricing Calculator to estimate
-                    monthly cloud infrastructure costs.
+                    Cloud platforms provide services
+                    for storing, managing, and accessing
+                    digital information.
                 </p>
             </div>
 
         </div>
 
-        <section class="objectives">
-            <h2>Project Objectives</h2>
-
-            <ul>
-                <li>Understand the basic concepts of cloud computing.</li>
-                <li>Deploy a website using GitHub Pages.</li>
-                <li>Explore cloud hosting and infrastructure.</li>
-                <li>Estimate cloud service costs using AWS Pricing Calculator.</li>
-                <li>Identify possible improvements to cloud services.</li>
-            </ul>
-        </section>
-
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>AIEN 327 – Cloud Computing</p>
-        <p>Deploy Your First Cloud Service</p>
+        <p>Cloud Computing Project | <span>AIEN 327</span></p>
+        <p>Academic Project | 2026</p>
     </footer>
+<p>
+        Click the link below to learn about the five features of cloud computing.
+    </p>
 
+    <a href="about.html">Read About the 5 Features of Cloud Computing</a>
 </body>
 </html>
 
