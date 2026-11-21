@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Concepts | AIEN 327</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172b4d;
+    line-height: 1.7;
+}
+
+nav {
+    background: #101f3c;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 { color: #42d6e8; }
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+}
+
+nav a:hover { color: #42d6e8; }
+
+header {
+    background: linear-gradient(135deg, #101f3c, #165b91);
+    text-align: center;
+    color: white;
+    padding: 65px 20px;
+}
+
+header h1 { font-size: 36px; }
+
+header p {
+    color: #dce8f5;
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 1050px;
+    margin: auto;
+    padding: 55px 20px;
+}
+
+.section-title {
+    color: #164e83;
+    margin: 35px 0 18px;
+}
+
+.item {
+    background: white;
+    padding: 24px;
+    margin-bottom: 17px;
+    border-left: 5px solid #42d6e8;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #142d5010;
+}
+
+.item h3 {
+    color: #164e83;
+    margin-bottom: 8px;
+}
+
+.item p { color: #66758a; }
+
+.highlight {
+    background: #e8f3fa;
+    padding: 28px;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+.highlight h3 {
+    color: #164e83;
+    margin-bottom: 10px;
+}
+
+footer {
+    background: #101f3c;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media(max-width:768px) {
+    nav { flex-direction: column; gap: 12px; }
+    nav a { margin: 0 8px; }
+    header h1 { font-size: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>☁ Cloud Deployment</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">Project Concepts</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Cloud Computing Concepts</h1>
+    <p>The technologies and principles behind our project.</p>
+</header>
+
+<main class="container">
+
+    <h2 class="section-title">
+        Five Essential Characteristics of Cloud Computing
+    </h2>
+
+    <section class="item">
+        <h3>01. On-Demand Self-Service</h3>
+        <p>
+            Users can access computing resources whenever
+            needed without requiring direct interaction
+            with the service provider.
+        </p>
+    </section>
+
+    <section class="item">
+        <h3>02. Broad Network Access</h3>
+        <p>
+            Cloud services are available over the internet
+            and can be accessed through computers,
+            smartphones and other devices.
+        </p>
+    </section>
+
+    <section class="item">
+        <h3>03. Resource Pooling</h3>
+        <p>
+            Cloud providers share computing resources
+            among multiple users according to demand.
+        </p>
+    </section>
+
+    <section class="item">
+        <h3>04. Rapid Elasticity</h3>
+        <p>
+            Computing resources can increase or decrease
+            depending on workload requirements.
+        </p>
+    </section>
+
+    <section class="item">
+        <h3>05. Measured Service</h3>
+        <p>
+            Cloud resource usage is monitored and measured,
+            allowing users to understand their consumption.
+        </p>
+    </section>
+
+    <h2 class="section-title">
+        Our Practical Cloud Implementation
+    </h2>
+
+    <section class="item">
+        <h3>GitHub Pages – Website Hosting</h3>
+        <p>
+            We use GitHub Pages to publish our HTML website
+            online. It provides a managed hosting platform
+            without requiring us to configure our own server.
+            It is closest to the PaaS service model.
+        </p>
+    </section>
+
+    <section class="item">
+        <h3>AWS EC2 – Cost Estimation</h3>
+        <p>
+            We use the AWS Pricing Calculator to estimate
+            the cost of hosting a similar website on an
+            Amazon EC2 virtual server. We compare On-Demand
+            and one-year Reserved Instance pricing.
+        </p>
+    </section>
+
+    <section class="item">
+        <h3>Auto Scaling – Proposed Improvement</h3>
+        <p>
+            We propose using AWS Auto Scaling to automatically
+            adjust the number of servers when website traffic
+            increases or decreases. This can improve
+            availability and performance, but it also
+            increases infrastructure costs and complexity.
+        </p>
+    </section>
+
+    <section class="highlight">
+        <h3>Project Outcome</h3>
+        <p>
+            Through this project, we demonstrate how a website
+            can be deployed using a cloud platform, investigate
+            cloud hosting costs and explore how cloud resources
+            can be scaled to support changing demand.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>Deploy Your First Cloud Service | AIEN 327</p>
+    <p>Academic Cloud Computing Project | 2026</p>
+</footer>
+
+</body>
+</html>
