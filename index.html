@@ -2,275 +2,635 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1730">
+<meta name="description" content="Explore cloud computing, its benefits, technologies, and five essential characteristics. An AI Cloud Team academic project.">
 
-    <title>Cloud Computing | AIEN 327</title>
+<title>Cloud Computing | AI Cloud Team</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f4f7fb;
-            color: #172b4d;
-            line-height: 1.7;
-        }
+<style>
+:root {
+    --navy: #0b1730;
+    --blue: #123d68;
+    --cyan: #42d6e8;
+    --text: #172b4d;
+    --muted: #68788f;
+    --bg: #f3f7fc;
+    --card: #ffffff;
+    --border: #e5edf5;
+}
 
-        /* Navigation */
-        nav {
-            background: #101f3c;
-            color: white;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        nav h2 {
-            color: #42d6e8;
-            font-size: 23px;
-        }
+html { scroll-behavior: smooth; }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-        }
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    transition: background .3s, color .3s;
+}
 
-        nav a:hover {
-            color: #42d6e8;
-        }
+body.dark {
+    --bg: #101a2b;
+    --card: #19263a;
+    --text: #e7effa;
+    --muted: #b1bfd1;
+    --border: #2b3b52;
+}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #101f3c, #164e83);
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
+a { text-decoration: none; }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 18px;
-        }
+/* Navigation */
+nav {
+    min-height: 76px;
+    background: rgba(11, 23, 48, .97);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,.12);
+}
 
-        .hero h1 span {
-            color: #42d6e8;
-        }
+.logo {
+    color: white;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+}
 
-        .hero p {
-            max-width: 700px;
-            margin: auto;
-            font-size: 18px;
-            color: #dce8f5;
-        }
+.logo span { color: var(--cyan); }
 
-        .hero a {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 13px 30px;
-            background: #42d6e8;
-            color: #101f3c;
-            text-decoration: none;
-            border-radius: 7px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
 
-        .hero a:hover {
-            background: white;
-            transform: translateY(-3px);
-        }
+.nav-links a {
+    color: #e4edf9;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+}
 
-        /* Main Content */
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 65px 20px;
-        }
+.nav-links a:hover,
+.nav-links a.active { color: var(--cyan); }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 30px;
-            color: #142d50;
-        }
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-        .subtitle {
-            text-align: center;
-            color: #66758a;
-            margin-bottom: 40px;
-        }
+.theme-btn, .menu-btn {
+    border: 1px solid #45617e;
+    background: transparent;
+    color: white;
+    border-radius: 9px;
+    padding: 9px 12px;
+    cursor: pointer;
+    font-size: 17px;
+}
 
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+.menu-btn { display: none; }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 5px 20px rgba(16, 31, 60, 0.07);
-            border-top: 4px solid #42d6e8;
-            transition: 0.3s;
-        }
+/* Hero */
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 90px 20px;
+    color: white;
+    position: relative;
+    background:
+        linear-gradient(120deg, rgba(7,19,43,.94), rgba(10,57,100,.76)),
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=85') center/cover;
+}
 
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 10px 25px rgba(16, 31, 60, 0.12);
-        }
+.hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+}
 
-        .card .icon {
-            font-size: 35px;
-            margin-bottom: 12px;
-        }
+.eyebrow {
+    display: inline-block;
+    padding: 8px 17px;
+    border: 1px solid rgba(66,214,232,.5);
+    border-radius: 30px;
+    color: var(--cyan);
+    font-size: 13px;
+    font-weight: 700;
+    background: rgba(66,214,232,.09);
+    margin-bottom: 25px;
+}
 
-        .card h3 {
-            color: #164e83;
-            margin-bottom: 12px;
-        }
+.hero h1 {
+    font-size: clamp(36px, 5vw, 65px);
+    line-height: 1.16;
+    margin-bottom: 22px;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
 
-        .card p {
-            color: #66758a;
-            font-size: 15px;
-        }
+.hero h1 span { color: var(--cyan); }
 
-        /* Footer */
-        footer {
-            background: #101f3c;
-            color: #dce8f5;
-            text-align: center;
-            padding: 25px;
-        }
+.hero h3 {
+    color: #d0e7f7;
+    font-size: 16px;
+    margin-bottom: 18px;
+    font-weight: 500;
+}
 
-        footer span {
-            color: #42d6e8;
-        }
+.hero p {
+    max-width: 690px;
+    margin: auto;
+    color: #e0eafa;
+    font-size: 17px;
+}
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 12px;
-            }
+.hero-buttons {
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
 
-            nav a {
-                margin: 0 8px;
-                font-size: 14px;
-            }
+.btn {
+    display: inline-block;
+    padding: 14px 27px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: .3s;
+}
 
-            .hero h1 {
-                font-size: 34px;
-            }
+.btn-primary {
+    background: var(--cyan);
+    color: var(--navy);
+}
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+.btn-secondary {
+    border: 1px solid rgba(255,255,255,.6);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+/* General sections */
+.container {
+    max-width: 1160px;
+    margin: auto;
+    padding: 85px 22px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading .small-title {
+    color: #10aabd;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: clamp(27px, 4vw, 37px);
+    color: var(--text);
+    margin: 9px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    max-width: 650px;
+    margin: auto;
+}
+
+/* Introduction */
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.intro-image {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(15,40,70,.15);
+}
+
+.intro-content h2 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin-bottom: 18px;
+    color: var(--text);
+}
+
+.intro-content p {
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.learn-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0a9db2;
+    font-weight: 800;
+}
+
+/* Benefits */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 16px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(12,40,75,.1);
+    border-color: var(--cyan);
+}
+
+.card-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+    background: rgba(66,214,232,.14);
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: var(--text);
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Highlight */
+.highlight {
+    background: linear-gradient(120deg, #102746, #145a86);
+    color: white;
+    border-radius: 20px;
+    padding: 55px 35px;
+    text-align: center;
+}
+
+.highlight h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.highlight p {
+    color: #d7e8f5;
+    max-width: 650px;
+    margin: 0 auto 25px;
+}
+
+/* Footer */
+footer {
+    background: #09152a;
+    color: #c4d2e3;
+    padding: 40px 20px 20px;
+    text-align: center;
+}
+
+footer h3 {
+    color: var(--cyan);
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+footer p { font-size: 13px; margin-bottom: 7px; }
+
+.footer-links {
+    margin: 16px 0;
+}
+
+.footer-links a {
+    color: #dce8f5;
+    margin: 0 12px;
+    font-size: 13px;
+}
+
+.footer-links a:hover { color: var(--cyan); }
+
+.copyright {
+    border-top: 1px solid #2a3c54;
+    margin-top: 22px;
+    padding-top: 18px;
+    color: #8fa2ba;
+}
+
+/* Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media(max-width: 850px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .intro-grid { gap: 30px; }
+}
+
+@media(max-width: 650px) {
+    nav { padding: 14px 5%; flex-wrap: wrap; }
+    .logo { font-size: 18px; }
+    .menu-btn { display: block; }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 0 10px;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a { margin: 0; }
+    .hero { min-height: 530px; }
+    .hero h1 { letter-spacing: -1px; }
+    .hero p { font-size: 15px; }
+    .container { padding: 60px 18px; }
+    .cards, .intro-grid { grid-template-columns: 1fr; }
+    .intro-image { height: 250px; }
+    .highlight { padding: 40px 20px; }
+    .highlight h2 { font-size: 24px; }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <h2>☁ Cloud Computing</h2>
+<nav>
+    <a href="index.html" class="logo">☁ AI <span>Cloud Team</span></a>
 
-        <div>
-            <a href="index.html">Home</a>
-            <a href="about.html">Cloud Features</a>
-        </div>
-    </nav>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="#introduction">Introduction</a>
+        <a href="#benefits">Benefits</a>
+        <a href="about.html">Cloud Features</a>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <div class="nav-actions">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+</nav>
 
-        <h1>Welcome to the <span>Cloud Computing Website</span></h1>
-        <h3>Hello from AI Cloud Team - AINT327 - Cloud Computing Project </h3>
+<header class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">☁ THE FUTURE OF TECHNOLOGY</div>
+
+        <h1>Explore the World of <span>Cloud Computing</span></h1>
+
+        <h3>AI Cloud Team | AINT327 - Cloud Computing Project</h3>
 
         <p>
-            Discover how cloud computing transforms the way
-            we store data, access applications, and use technology
-            through the power of the internet.
+            Discover how cloud computing is transforming our digital world.
+            Learn how people and businesses access computing resources,
+            store information, and use powerful technologies through the internet.
         </p>
 
-        <a href="about.html">Explore Cloud Computing →</a>
+        <div class="hero-buttons">
+            <a href="about.html" class="btn btn-primary">Explore the 5 Features →</a>
+            <a href="#introduction" class="btn btn-secondary">Discover More</a>
+        </div>
+    </div>
+</header>
 
-    </section>
+<main>
 
-    <!-- Introduction -->
-    <main class="container">
-
-        <h2 class="section-title">
-            Understanding Cloud Computing
-        </h2>
-
-        <p class="subtitle">
-            A smarter way to access and manage computing resources.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="icon">🌐</div>
-
-                <h3>Access Anywhere</h3>
-
-                <p>
-                    Access cloud services and information
-                    through the internet from different
-                    locations and devices.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">⚡</div>
-
-                <h3>Flexible Resources</h3>
-
-                <p>
-                    Cloud resources can be adjusted
-                    according to changing user and
-                    business requirements.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🔒</div>
-
-                <h3>Data Management</h3>
-
-                <p>
-                    Cloud platforms provide services
-                    for storing, managing, and accessing
-                    digital information.
-                </p>
-            </div>
-
+<section class="container" id="introduction">
+    <div class="intro-grid reveal">
+        <div>
+            <img
+                class="intro-image"
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
+                alt="Modern computer technology and electronic components"
+                loading="lazy">
         </div>
 
-    </main>
+        <div class="intro-content">
+            <div class="section-heading" style="text-align:left;margin-bottom:18px">
+                <span class="small-title">GET TO KNOW THE CLOUD</span>
+            </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Cloud Computing Project | <span>AIEN 327</span></p>
-        <p>Academic Project | 2026</p>
-    </footer>
-<p>
-        Click the link below to learn about the five features of cloud computing.
-    </p>
+            <h2>Understanding Cloud Computing</h2>
 
-    <a href="about.html">Read About the 5 Features of Cloud Computing</a>
+            <p>
+                Cloud computing is the delivery of computing services,
+                including servers, storage, databases, networking,
+                and software, over the internet.
+            </p>
+
+            <p>
+                Instead of relying only on local computers, users can
+                access computing resources from cloud providers whenever
+                they need them.
+            </p>
+
+            <a href="about.html" class="learn-link">
+                Discover its five essential characteristics →
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="benefits">
+    <div class="section-heading reveal">
+        <span class="small-title">WHY CLOUD COMPUTING?</span>
+        <h2>Explore the Benefits</h2>
+        <p>
+            Cloud computing offers flexible and convenient ways
+            to access and manage digital resources.
+        </p>
+    </div>
+
+    <div class="cards">
+        <article class="card reveal">
+            <div class="card-icon">🌍</div>
+            <h3>Access Anywhere</h3>
+            <p>
+                Access cloud services and information through the internet
+                from different locations and supported devices.
+            </p>
+        </article>
+
+        <article class="card reveal">
+            <div class="card-icon">⚡</div>
+            <h3>Flexible Resources</h3>
+            <p>
+                Increase or decrease computing resources according
+                to changing requirements.
+            </p>
+        </article>
+
+        <article class="card reveal">
+            <div class="card-icon">🔐</div>
+            <h3>Data Management</h3>
+            <p>
+                Use cloud services to store, organize, manage,
+                and access digital information.
+            </p>
+        </article>
+
+        <article class="card reveal">
+            <div class="card-icon">💰</div>
+            <h3>Cost Efficiency</h3>
+            <p>
+                Reduce the need to purchase and maintain all computing
+                infrastructure locally.
+            </p>
+        </article>
+
+        <article class="card reveal">
+            <div class="card-icon">🚀</div>
+            <h3>Scalability</h3>
+            <p>
+                Adapt computing capacity to support changing workloads
+                and business demands.
+            </p>
+        </article>
+
+        <article class="card reveal">
+            <div class="card-icon">🤝</div>
+            <h3>Collaboration</h3>
+            <p>
+                Support teamwork by allowing users to access shared
+                applications and information online.
+            </p>
+        </article>
+    </div>
+</section>
+
+<section class="container">
+    <div class="highlight reveal">
+        <h2>Ready to Explore the Five Characteristics?</h2>
+        <p>
+            Learn about the five essential characteristics that
+            define cloud computing and understand how each one works
+            in real-world applications.
+        </p>
+        <a href="about.html" class="btn btn-primary">
+            Discover Cloud Features →
+        </a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <h3>☁ AI Cloud Team</h3>
+    <p>Exploring the Future of Cloud Computing</p>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">Cloud Features</a>
+    </div>
+
+    <p>Cloud Computing Project | AINT327</p>
+    <p class="copyright">© 2026 AI Cloud Team. Academic Project.</p>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+const themeBtn = document.getElementById("themeBtn");
+
+// Mobile navigation
+menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    menuBtn.setAttribute(
+        "aria-expanded",
+        navLinks.classList.contains("open")
+    );
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+    });
+});
+
+// Dark mode with saved preference
+if (localStorage.getItem("cloudTheme") === "dark") {
+    document.body.classList.add("dark");
+    themeBtn.textContent = "☀️";
+}
+
+themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("cloudTheme", isDark ? "dark" : "light");
+});
+
+// Scroll reveal animation
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+</script>
+
 </body>
 </html>
-
 
