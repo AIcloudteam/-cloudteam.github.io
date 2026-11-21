@@ -2,248 +2,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deploy Your First Cloud Service | AIEN 327</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Your First Cloud Service | AIEN 327</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
-    color: #172b4d;
-    line-height: 1.7;
-}
+        header {
+            background: #0b1f3a;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-nav {
-    background: #101f3c;
-    padding: 20px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
+        header h2 {
+            font-size: 22px;
+        }
 
-nav h2 { color: #42d6e8; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: bold;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 22px;
-}
+        nav a:hover {
+            color: #38bdf8;
+        }
 
-nav a:hover { color: #42d6e8; }
+        .hero {
+            background: linear-gradient(135deg, #0b1f3a, #145da0);
+            color: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
 
-.hero {
-    background: linear-gradient(135deg, #101f3c, #165b91);
-    color: white;
-    text-align: center;
-    padding: 95px 20px;
-}
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
 
-.hero .tag {
-    color: #42d6e8;
-    letter-spacing: 2px;
-    font-size: 13px;
-    font-weight: bold;
-}
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #dbeafe;
+        }
 
-.hero h1 {
-    font-size: 46px;
-    margin: 18px 0;
-}
+        .btn {
+            display: inline-block;
+            background: #38bdf8;
+            color: #0b1f3a;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-.hero h1 span { color: #42d6e8; }
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
 
-.hero p {
-    max-width: 720px;
-    margin: auto;
-    color: #dce8f5;
-    font-size: 17px;
-}
+        .container {
+            width: 85%;
+            max-width: 1100px;
+            margin: 60px auto;
+        }
 
-.btn {
-    display: inline-block;
-    margin-top: 28px;
-    background: #42d6e8;
-    color: #101f3c;
-    padding: 13px 28px;
-    border-radius: 7px;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #0b1f3a;
+        }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 65px 20px;
-}
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
 
-.heading {
-    text-align: center;
-    margin-bottom: 35px;
-}
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            border-top: 4px solid #38bdf8;
+        }
 
-.heading h2 {
-    font-size: 30px;
-    color: #164e83;
-}
+        .card h3 {
+            color: #145da0;
+            margin-bottom: 12px;
+        }
 
-.heading p { color: #66758a; }
+        .objectives {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin-top: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
+        .objectives h2 {
+            color: #0b1f3a;
+            margin-bottom: 15px;
+        }
 
-.card {
-    background: white;
-    padding: 28px;
-    border-radius: 12px;
-    border-bottom: 4px solid #42d6e8;
-    box-shadow: 0 5px 18px #142d5010;
-}
+        .objectives ul {
+            padding-left: 25px;
+        }
 
-.card h3 {
-    color: #164e83;
-    margin-bottom: 12px;
-}
+        .objectives li {
+            margin-bottom: 10px;
+        }
 
-.card p { color: #66758a; }
+        footer {
+            background: #0b1f3a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+        }
 
-.card .icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-}
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 30px;
+            }
 
-.project-info {
-    background: #e8f3fa;
-    border-radius: 12px;
-    padding: 35px;
-    margin-top: 40px;
-}
+            header {
+                flex-direction: column;
+            }
 
-.project-info h2 {
-    color: #164e83;
-    margin-bottom: 12px;
-}
-
-footer {
-    background: #101f3c;
-    color: #dce8f5;
-    text-align: center;
-    padding: 25px;
-}
-
-footer span { color: #42d6e8; }
-
-@media(max-width: 768px) {
-    nav { flex-direction: column; gap: 12px; }
-    nav a { margin: 0 8px; }
-    .hero h1 { font-size: 33px; }
-    .cards { grid-template-columns: 1fr; }
-}
-</style>
+            nav a {
+                margin: 0 8px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
-    <h2>☁ Cloud Deployment</h2>
-    <div>
-        <a href="index.html">Home</a>
-        <a href="about.html">Project Concepts</a>
-    </div>
-</nav>
+    <header>
+        <h2>Cloud Service Project</h2>
 
-<section class="hero">
-    <p class="tag">AIEN 327 | CLOUD COMPUTING PROJECT</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">Project Concepts</a>
+        </nav>
+    </header>
 
-    <h1>Deploy Your First <span>Cloud Service</span></h1>
-
-    <p>
-        Exploring cloud computing through practical website
-        deployment, cloud hosting, cost estimation and
-        scalable infrastructure.
-    </p>
-
-    <a class="btn" href="about.html">
-        Explore Our Project →
-    </a>
-</section>
-
-<main class="container">
-
-    <div class="heading">
-        <h2>About Our Project</h2>
-        <p>Understanding cloud technology through practical implementation.</p>
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">🌐</div>
-            <h3>Website Deployment</h3>
-            <p>
-                Creating and publishing a functional website
-                using GitHub Pages and understanding how
-                cloud hosting works.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">☁️</div>
-            <h3>Cloud Infrastructure</h3>
-            <p>
-                Exploring cloud hosting services and
-                understanding how platforms provide
-                computing resources.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">📊</div>
-            <h3>Cloud Cost Analysis</h3>
-            <p>
-                Estimating AWS hosting costs and comparing
-                different pricing options to understand
-                cloud service expenses.
-            </p>
-        </div>
-
-    </div>
-
-    <section class="project-info">
-        <h2>Our Project Objectives</h2>
+    <section class="hero">
+        <h1>Deploy Your First Cloud Service</h1>
 
         <p>
-            • Create and deploy a live website using GitHub Pages.<br>
-            • Understand the fundamental characteristics of cloud computing.<br>
-            • Explore cloud service models and hosting solutions.<br>
-            • Estimate hosting costs using the AWS Pricing Calculator.<br>
-            • Investigate scalability through the concept of Auto Scaling.
+            A practical cloud computing project demonstrating website
+            deployment, cloud infrastructure, and cost estimation.
         </p>
+
+        <a href="about.html" class="btn">
+            Explore Our Project →
+        </a>
     </section>
 
-</main>
+    <main class="container">
 
-<footer>
-    <p>Deploy Your First Cloud Service</p>
-    <p><span>Cloud Computing | AIEN 327 | 2026</span></p>
-</footer>
+        <h2 class="section-title">About This Project</h2>
 
-<br>
-<a href="about.html">Read about the 5 features of Cloud Computing</a>
-<a class="btn" href="about.html">
-    Explore Our Project →
-</a>
+        <div class="cards">
+
+            <div class="card">
+                <h3>Website Deployment</h3>
+                <p>
+                    Create and publish a website using GitHub Pages
+                    to understand how cloud-based hosting works.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Cloud Infrastructure</h3>
+                <p>
+                    Explore cloud computing services and understand
+                    the role of infrastructure in hosting applications.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Cloud Cost Analysis</h3>
+                <p>
+                    Use the AWS Pricing Calculator to estimate
+                    monthly cloud infrastructure costs.
+                </p>
+            </div>
+
+        </div>
+
+        <section class="objectives">
+            <h2>Project Objectives</h2>
+
+            <ul>
+                <li>Understand the basic concepts of cloud computing.</li>
+                <li>Deploy a website using GitHub Pages.</li>
+                <li>Explore cloud hosting and infrastructure.</li>
+                <li>Estimate cloud service costs using AWS Pricing Calculator.</li>
+                <li>Identify possible improvements to cloud services.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>AIEN 327 – Cloud Computing</p>
+        <p>Deploy Your First Cloud Service</p>
+    </footer>
+
 </body>
 </html>
+
 
